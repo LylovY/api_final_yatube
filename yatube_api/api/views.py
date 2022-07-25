@@ -5,7 +5,7 @@ from rest_framework import filters, viewsets
 from rest_framework.pagination import LimitOffsetPagination
 from rest_framework.permissions import IsAuthenticated
 
-from .permissions import IsAuthorOrReadOnly, ReadOnly
+from .permissions import IsAuthorOrReadOnly
 from .serializers import (CommentSerializer, FollowSerializer, GroupSerializer,
                           PostSerializer, UserSerializer)
 
@@ -26,7 +26,6 @@ class PostViewSet(viewsets.ModelViewSet):
 class UserViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    permission_classes = [ReadOnly]
 
 
 class GroupViewSet(viewsets.ReadOnlyModelViewSet):
